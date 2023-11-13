@@ -1,3 +1,4 @@
+import { MENU_DATA } from "./data";
 function parseOrder(input) {
   const orders = input.split(",");
 
@@ -25,4 +26,25 @@ function parseOrder(input) {
   return orderObjects;
 }
 
-export { parseOrder };
+function formatMenu(menuObjects) {
+  return menuObjects
+    .map(({ menu, quantity }) => `${menu} ${quantity}개`)
+    .join(", ");
+}
+
+function calculatePriceBeforeBenefit(total_menu) {
+  let totalPrice = 0;
+
+  total_menu.forEach((order) => {
+    const { menu, quantity } = order;
+
+    // 주어진 메뉴명과 일치하는 메뉴 찾기
+    const foundMenu = MENU_DATA.find((item) => item.name === menu);
+
+    totalPrice += foundMenu.price * quantity;
+  });
+
+  return totalPrice;
+}
+
+export { parseOrder, formatMenu, calculatePriceBeforeBenefit };

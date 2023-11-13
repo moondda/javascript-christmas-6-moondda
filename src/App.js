@@ -5,7 +5,14 @@ class App {
   async run() {
     OutputView.printStart();
     await InputView.readDate();
-    await InputView.readMenu();
+    const total_menu = await InputView.readMenu();
+    console.log(total_menu);
+    // await InputView.readMenu();
+    await OutputView.printPreview();
+    await OutputView.printMenuHeader();
+    await OutputView.printMenu(total_menu);
+    await OutputView.printBeforeBenefitPriceHeader();
+    await OutputView.printBeforeBenefitPrice(total_menu);
   }
 }
 
