@@ -47,10 +47,10 @@ function calculatePriceBeforeBenefit(total_menu) {
   return totalPrice;
 }
 
-function isFreeGift(total_menu) {
-  const price = calculatePriceBeforeBenefit(total_menu);
-  if (price >= 120000) return true;
-  else return false;
+function saleForDday(day) {
+  let dday_sale_price = 0;
+  if (day <= 25 && day >= 1) dday_sale_price = 1000 + (day - 1) * 100;
+  return dday_sale_price;
 }
 
-export { parseOrder, formatMenu, calculatePriceBeforeBenefit, isFreeGift };
+export { parseOrder, formatMenu, calculatePriceBeforeBenefit, saleForDday };

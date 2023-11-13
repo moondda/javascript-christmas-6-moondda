@@ -4,7 +4,7 @@ import OutputView from "./OutputView";
 class App {
   async run() {
     OutputView.printStart();
-    await InputView.readDate();
+    const day = await InputView.readDate();
     const total_menu = await InputView.readMenu();
     console.log(total_menu);
     // await InputView.readMenu();
@@ -16,6 +16,8 @@ class App {
       total_menu
     );
     await OutputView.printFreeGift(price_before_benefit);
+    await OutputView.printBenefitHeader();
+    await OutputView.printDdaySale(day);
   }
 }
 

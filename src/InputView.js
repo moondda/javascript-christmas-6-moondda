@@ -2,6 +2,7 @@ import { MissionUtils } from "@woowacourse/mission-utils";
 import { parseOrder } from "./function";
 const InputView = {
   async readDate() {
+    let date;
     while (true) {
       try {
         const input = await MissionUtils.Console.readLineAsync(
@@ -18,11 +19,13 @@ const InputView = {
 
         if (input_to_num < 1 || input_to_num > 31)
           throw Error("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        date = input_to_num;
         break;
       } catch (error) {
         MissionUtils.Console.print(error.message);
       }
     }
+    return date;
   },
   async readMenu() {
     let menu;
