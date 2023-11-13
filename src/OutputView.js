@@ -46,20 +46,18 @@ const OutputView = {
   },
   printWeekdaySale(day, menuObjects) {
     const weekday_sale = saleForWeekday(day, menuObjects);
-    if (weekday_sale == 0) MissionUtils.Console.print(`평일 할인: 없음`);
-    else
+    if (weekday_sale != 0)
       MissionUtils.Console.print(
         `평일 할인: -${weekday_sale.toLocaleString()}원`
       );
   },
-  //   printWeekendSale(day, menuObjects) {
-  //     const weekday_sale = saleForWeekday(day, menuObjects);
-  //     if (weekday_sale == 0) MissionUtils.Console.print(`평일 할인: 없음`);
-  //     else
-  //       MissionUtils.Console.print(
-  //         `평일 할인: -${weekday_sale.toLocaleString()}원`
-  //       );
-  //   },
+  printWeekendSale(day, menuObjects) {
+    const weekend_sale = saleForWeekend(day, menuObjects);
+    if (weekend_sale != 0)
+      MissionUtils.Console.print(
+        `주말 할인: -${weekend_sale.toLocaleString()}원`
+      );
+  },
 };
 
 export default OutputView;

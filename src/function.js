@@ -77,10 +77,32 @@ function saleForWeekday(day, total_menu) {
   return 0;
 }
 
+function saleForWeekend(day, total_menu) {
+  const weekend = [1, 2, 8, 9, 15, 16, 22, 23, 29, 30];
+  const main = ["티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타"];
+  const SALE_PRICE = 2023;
+  if (weekend.includes(day)) {
+    const main_count = total_menu.reduce((count, order) => {
+      if (main.includes(order.menu)) {
+        return count + order.quantity;
+      }
+      return count;
+    }, 0);
+
+    if (main_count > 0) {
+      const totalDiscount = dessertCount * SALE_PRICE;
+      return totalDiscount;
+    }
+  }
+
+  return 0;
+}
+
 export {
   parseOrder,
   formatMenu,
   calculatePriceBeforeBenefit,
   saleForDday,
   saleForWeekday,
+  saleForWeekend,
 };
