@@ -7,9 +7,7 @@ class App {
     OutputView.printStart();
     const day = await InputView.readDate();
     const total_menu = await InputView.readMenu();
-    console.log(total_menu);
     await OutputView.printPreview();
-    await OutputView.printMenuHeader();
     await OutputView.printMenu(total_menu);
     await OutputView.printBeforeBenefitPriceHeader();
     const price_before_benefit = await OutputView.printBeforeBenefitPrice(
