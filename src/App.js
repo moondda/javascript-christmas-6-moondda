@@ -8,7 +8,6 @@ class App {
     const day = await InputView.readDate();
     const total_menu = await InputView.readMenu();
     console.log(total_menu);
-    // await InputView.readMenu();
     await OutputView.printPreview();
     await OutputView.printMenuHeader();
     await OutputView.printMenu(total_menu);
@@ -24,9 +23,7 @@ class App {
       week_sale_price = await OutputView.printWeekdaySale(day, total_menu);
     else week_sale_price = await OutputView.printWeekendSale(day, total_menu);
     const star_day_sale_price = await OutputView.printStarDaySale(day);
-    const free_gift_sale_price = await OutputView.printFreeGiftEvent(
-      price_before_benefit
-    );
+    await OutputView.printFreeGiftEvent(price_before_benefit);
 
     const total_benefit = await OutputView.printTotalBenefit(
       dday_sale_price,
@@ -34,7 +31,7 @@ class App {
       star_day_sale_price
     );
 
-    const price_after_benefit = await OutputView.printAfterBenefitPrice(
+    await OutputView.printAfterBenefitPrice(
       price_before_benefit,
       total_benefit
     );
