@@ -4,10 +4,9 @@ import { isWeekEnd } from "./function";
 
 class App {
   async run() {
-    OutputView.printStart();
-    const day = await InputView.readDate();
-    const total_menu = await InputView.readMenu();
+    const { day, total_menu } = await this.getInputs();
     const price_before_benefit = await this.printFormattedInputs(total_menu);
+
     await OutputView.printFreeGift(price_before_benefit);
     const total_benefit = await this.printBenefits(
       day,
@@ -18,8 +17,13 @@ class App {
       price_before_benefit,
       total_benefit
     );
-
     await OutputView.printBadge(total_benefit);
+  }
+
+  async getInputs() {
+    const day = await InputView.readDate();
+    const total_menu = await InputView.readMenu();
+    return { day, total_menu };
   }
 
   async printFormattedInputs(total_menu) {
