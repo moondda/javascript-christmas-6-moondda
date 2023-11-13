@@ -12,7 +12,10 @@ class App {
     await OutputView.printMenuHeader();
     await OutputView.printMenu(total_menu);
     await OutputView.printBeforeBenefitPriceHeader();
-    await OutputView.printBeforeBenefitPrice(total_menu);
+    const price_before_benefit = await OutputView.printBeforeBenefitPrice(
+      total_menu
+    );
+    await OutputView.printFreeGift(price_before_benefit);
   }
 }
 

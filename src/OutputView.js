@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { calculatePriceBeforeBenefit } from "./function";
+import { calculatePriceBeforeBenefit, isFreeGift } from "./function";
 const OutputView = {
   printStart() {
     MissionUtils.Console.print(
@@ -25,6 +25,11 @@ const OutputView = {
   printBeforeBenefitPrice(menuObjects) {
     const price = calculatePriceBeforeBenefit(menuObjects);
     MissionUtils.Console.print(`${price.toLocaleString()}원\n`);
+    return price;
+  },
+  printFreeGift(price) {
+    if (price < 120000) MissionUtils.Console.print("<증정 메뉴>\n없음");
+    else MissionUtils.Console.print("<증정 메뉴>\n샴페인 1개");
   },
   printBenefitHeader() {
     MissionUtils.Console.print("<혜택 내역>");

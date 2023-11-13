@@ -47,4 +47,10 @@ function calculatePriceBeforeBenefit(total_menu) {
   return totalPrice;
 }
 
-export { parseOrder, formatMenu, calculatePriceBeforeBenefit };
+function isFreeGift(total_menu) {
+  const price = calculatePriceBeforeBenefit(total_menu);
+  if (price >= 120000) return true;
+  else return false;
+}
+
+export { parseOrder, formatMenu, calculatePriceBeforeBenefit, isFreeGift };
