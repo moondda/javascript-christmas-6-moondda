@@ -40,9 +40,10 @@ const OutputView = {
   },
   printDdaySale(day) {
     const dday_sale = saleForDday(day);
-    MissionUtils.Console.print(
-      `크리스마스 디데이 할인: ${dday_sale.toLocaleString()}원`
-    );
+    if (dday_sale != 0)
+      MissionUtils.Console.print(
+        `크리스마스 디데이 할인: -${dday_sale.toLocaleString()}원`
+      );
   },
   printWeekdaySale(day, menuObjects) {
     const weekday_sale = saleForWeekday(day, menuObjects);
