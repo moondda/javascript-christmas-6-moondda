@@ -79,23 +79,24 @@ const OutputView = {
       return free_gift_sale;
     } else return 0;
   },
-  printTotalBenefit(
-    dday_sale_price,
-    week_sale_price,
-    star_day_sale_price,
-    free_gift_sale_price
-  ) {
+  printTotalBenefit(dday_sale_price, week_sale_price, star_day_sale_price) {
     const total_benefit =
-      dday_sale_price +
-      week_sale_price +
-      star_day_sale_price +
-      free_gift_sale_price;
+      dday_sale_price + week_sale_price + star_day_sale_price;
 
     if (total_benefit)
       MissionUtils.Console.print(
-        `<총혜택 금액>\n-${total_benefit.toLocaleString()}원`
+        `<총혜택 금액>\n-${total_benefit.toLocaleString()}원\n`
       );
-    else MissionUtils.Console.print("없음\n<총혜택 금액>\n없음");
+    else MissionUtils.Console.print("없음\n<총혜택 금액>\n0원\n");
+    return total_benefit;
+  },
+  printAfterBenefitPrice(price_before_benefit, total_benefit) {
+    const final_price = price_before_benefit - total_benefit;
+    console.log(price_before_benefit, total_benefit);
+    MissionUtils.Console.print(
+      `<할인 후 예상 결제 금액>\n${final_price.toLocaleString()}원\n`
+    );
+    return final_price;
   },
 };
 

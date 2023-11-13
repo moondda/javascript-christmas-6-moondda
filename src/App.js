@@ -22,8 +22,7 @@ class App {
     let week_sale_price;
     if (isWeekEnd)
       week_sale_price = await OutputView.printWeekdaySale(day, total_menu);
-    if (!isWeekEnd)
-      week_sale_price = await OutputView.printWeekendSale(day, total_menu);
+    else week_sale_price = await OutputView.printWeekendSale(day, total_menu);
     const star_day_sale_price = await OutputView.printStarDaySale(day);
     const free_gift_sale_price = await OutputView.printFreeGiftEvent(
       price_before_benefit
@@ -32,8 +31,12 @@ class App {
     const total_benefit = await OutputView.printTotalBenefit(
       dday_sale_price,
       week_sale_price,
-      star_day_sale_price,
-      free_gift_sale_price
+      star_day_sale_price
+    );
+    console.log(total_benefit, "q");
+    const price_after_benefit = await OutputView.printAfterBenefitPrice(
+      price_before_benefit,
+      total_benefit
     );
   }
 }
