@@ -104,6 +104,13 @@ function saleForStarDay(day) {
   return 0;
 }
 
+function getBadge(benefit) {
+  if (benefit >= 5000 && benefit < 10000) return "별";
+  if (benefit >= 10000 && benefit < 20000) return "트리";
+  if (benefit >= 20000) return "산타";
+  return "없음";
+}
+
 export {
   parseOrder,
   formatMenu,
@@ -113,4 +120,5 @@ export {
   saleForWeekday,
   saleForWeekend,
   saleForStarDay,
+  getBadge,
 };

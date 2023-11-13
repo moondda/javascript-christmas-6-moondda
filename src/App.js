@@ -33,11 +33,13 @@ class App {
       week_sale_price,
       star_day_sale_price
     );
-    console.log(total_benefit, "q");
+
     const price_after_benefit = await OutputView.printAfterBenefitPrice(
       price_before_benefit,
       total_benefit
     );
+
+    await OutputView.printBadge(total_benefit);
   }
 }
 

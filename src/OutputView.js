@@ -4,6 +4,7 @@ import {
   saleForDday,
   saleForWeekday,
   saleForStarDay,
+  getBadge,
 } from "./function";
 const OutputView = {
   printStart() {
@@ -97,6 +98,10 @@ const OutputView = {
       `<할인 후 예상 결제 금액>\n${final_price.toLocaleString()}원\n`
     );
     return final_price;
+  },
+  printBadge(total_benefit) {
+    const badge = getBadge(total_benefit);
+    MissionUtils.Console.print(`<12월 이벤트 배지>\n${badge}\n`);
   },
 };
 
