@@ -40,7 +40,7 @@ class App {
     await OutputView.printBenefitHeader();
     const dday_sale_price = await OutputView.printDdaySale(day);
     let week_sale_price;
-    if (isWeekEnd)
+    if (isWeekEnd(day))
       week_sale_price = await OutputView.printWeekdaySale(day, total_menu);
     else week_sale_price = await OutputView.printWeekendSale(day, total_menu);
 

@@ -90,7 +90,7 @@ function saleForWeekend(day, total_menu) {
   }, 0);
 
   if (main_count > 0) {
-    const totalDiscount = dessertCount * SALE_PRICE;
+    const totalDiscount = main_count * SALE_PRICE;
     return totalDiscount;
   }
 

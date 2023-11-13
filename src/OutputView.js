@@ -3,6 +3,7 @@ import {
   calculatePriceBeforeBenefit,
   saleForDday,
   saleForWeekday,
+  saleForWeekend,
   saleForStarDay,
   getBadge,
 } from "./function";
