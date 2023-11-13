@@ -53,46 +53,45 @@ function saleForDday(day) {
   return dday_sale_price;
 }
 
+function isWeekEnd(day) {
+  const weekend = [1, 2, 8, 9, 15, 16, 22, 23, 29, 30];
+  if (weekend.includes(day)) return true;
+  else return false;
+}
+
 function saleForWeekday(day, total_menu) {
-  const weekday = [
-    3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 25, 26, 27, 28,
-    31,
-  ];
   const dessert = ["초코케이크", "아이스크림"];
   const SALE_PRICE = 2023;
-  if (weekday.includes(day)) {
-    const dessertCount = total_menu.reduce((count, order) => {
-      if (dessert.includes(order.menu)) {
-        return count + order.quantity;
-      }
-      return count;
-    }, 0);
 
-    if (dessertCount > 0) {
-      const totalDiscount = dessertCount * SALE_PRICE;
-      return totalDiscount;
+  const dessertCount = total_menu.reduce((count, order) => {
+    if (dessert.includes(order.menu)) {
+      return count + order.quantity;
     }
+    return count;
+  }, 0);
+
+  if (dessertCount > 0) {
+    const totalDiscount = dessertCount * SALE_PRICE;
+    return totalDiscount;
   }
 
   return 0;
 }
 
 function saleForWeekend(day, total_menu) {
-  const weekend = [1, 2, 8, 9, 15, 16, 22, 23, 29, 30];
   const main = ["티본스테이크", "바비큐립", "해산물파스타", "크리스마스파스타"];
   const SALE_PRICE = 2023;
-  if (weekend.includes(day)) {
-    const main_count = total_menu.reduce((count, order) => {
-      if (main.includes(order.menu)) {
-        return count + order.quantity;
-      }
-      return count;
-    }, 0);
 
-    if (main_count > 0) {
-      const totalDiscount = dessertCount * SALE_PRICE;
-      return totalDiscount;
+  const main_count = total_menu.reduce((count, order) => {
+    if (main.includes(order.menu)) {
+      return count + order.quantity;
     }
+    return count;
+  }, 0);
+
+  if (main_count > 0) {
+    const totalDiscount = dessertCount * SALE_PRICE;
+    return totalDiscount;
   }
 
   return 0;
@@ -103,6 +102,7 @@ export {
   formatMenu,
   calculatePriceBeforeBenefit,
   saleForDday,
+  isWeekEnd,
   saleForWeekday,
   saleForWeekend,
 };

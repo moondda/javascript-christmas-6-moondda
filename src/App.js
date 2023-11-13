@@ -1,5 +1,6 @@
 import InputView from "./InputView";
 import OutputView from "./OutputView";
+import { isWeekEnd } from "./function";
 
 class App {
   async run() {
@@ -18,7 +19,8 @@ class App {
     await OutputView.printFreeGift(price_before_benefit);
     await OutputView.printBenefitHeader();
     await OutputView.printDdaySale(day);
-    await OutputView.printWeekdaySale(day, total_menu);
+    if (isWeekEnd) await OutputView.printWeekdaySale(day, total_menu);
+    if (!isWeekEnd) await OutputView.printWeekendSale(day, total_menu);
   }
 }
 
