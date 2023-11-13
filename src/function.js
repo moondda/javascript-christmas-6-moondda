@@ -97,6 +97,13 @@ function saleForWeekend(day, total_menu) {
   return 0;
 }
 
+function saleForStarDay(day) {
+  const star_day = [3, 10, 17, 24, 31];
+  const SALE_PRICE = 1000;
+  if (star_day.includes(day)) return SALE_PRICE;
+  return 0;
+}
+
 export {
   parseOrder,
   formatMenu,
@@ -105,4 +112,5 @@ export {
   isWeekEnd,
   saleForWeekday,
   saleForWeekend,
+  saleForStarDay,
 };

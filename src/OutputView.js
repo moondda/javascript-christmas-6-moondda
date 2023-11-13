@@ -3,6 +3,7 @@ import {
   calculatePriceBeforeBenefit,
   saleForDday,
   saleForWeekday,
+  saleForStarDay,
 } from "./function";
 const OutputView = {
   printStart() {
@@ -58,6 +59,16 @@ const OutputView = {
       MissionUtils.Console.print(
         `주말 할인: -${weekend_sale.toLocaleString()}원`
       );
+  },
+  printStarDaySale(day) {
+    const star_day_sale = saleForStarDay(day);
+    if (star_day_sale)
+      MissionUtils.Console.print(
+        `특별 할인: -${star_day_sale.toLocaleString()}원`
+      );
+  },
+  printFreeGiftEvent(price) {
+    if (price > 120000) MissionUtils.Console.print("증정 이벤트: -25,000원");
   },
 };
 

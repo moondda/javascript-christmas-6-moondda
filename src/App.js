@@ -21,6 +21,8 @@ class App {
     await OutputView.printDdaySale(day);
     if (isWeekEnd) await OutputView.printWeekdaySale(day, total_menu);
     if (!isWeekEnd) await OutputView.printWeekendSale(day, total_menu);
+    await OutputView.printStarDaySale(day);
+    await OutputView.printFreeGiftEvent(price_before_benefit);
   }
 }
 
