@@ -1,5 +1,9 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { calculatePriceBeforeBenefit, saleForDday } from "./function";
+import {
+  calculatePriceBeforeBenefit,
+  saleForDday,
+  saleForWeekday,
+} from "./function";
 const OutputView = {
   printStart() {
     MissionUtils.Console.print(
@@ -40,6 +44,22 @@ const OutputView = {
       `크리스마스 디데이 할인: ${dday_sale.toLocaleString()}원`
     );
   },
+  printWeekdaySale(day, menuObjects) {
+    const weekday_sale = saleForWeekday(day, menuObjects);
+    if (weekday_sale == 0) MissionUtils.Console.print(`평일 할인: 없음`);
+    else
+      MissionUtils.Console.print(
+        `평일 할인: -${weekday_sale.toLocaleString()}원`
+      );
+  },
+  //   printWeekendSale(day, menuObjects) {
+  //     const weekday_sale = saleForWeekday(day, menuObjects);
+  //     if (weekday_sale == 0) MissionUtils.Console.print(`평일 할인: 없음`);
+  //     else
+  //       MissionUtils.Console.print(
+  //         `평일 할인: -${weekday_sale.toLocaleString()}원`
+  //       );
+  //   },
 };
 
 export default OutputView;

@@ -18,6 +18,7 @@ class App {
     await OutputView.printFreeGift(price_before_benefit);
     await OutputView.printBenefitHeader();
     await OutputView.printDdaySale(day);
+    await OutputView.printWeekdaySale(day, total_menu);
   }
 }
 

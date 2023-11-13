@@ -53,4 +53,34 @@ function saleForDday(day) {
   return dday_sale_price;
 }
 
-export { parseOrder, formatMenu, calculatePriceBeforeBenefit, saleForDday };
+function saleForWeekday(day, total_menu) {
+  const weekday = [
+    3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 24, 25, 26, 27, 28,
+    31,
+  ];
+  const dessert = ["초코케이크", "아이스크림"];
+  const SALE_PRICE = 2023;
+  if (weekday.includes(day)) {
+    const dessertCount = total_menu.reduce((count, order) => {
+      if (dessert.includes(order.menu)) {
+        return count + order.quantity;
+      }
+      return count;
+    }, 0);
+
+    if (dessertCount > 0) {
+      const totalDiscount = dessertCount * SALE_PRICE;
+      return totalDiscount;
+    }
+  }
+
+  return 0;
+}
+
+export {
+  parseOrder,
+  formatMenu,
+  calculatePriceBeforeBenefit,
+  saleForDday,
+  saleForWeekday,
+};
