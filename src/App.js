@@ -4,7 +4,8 @@ import OutputView from "./OutputView";
 class App {
   async run() {
     OutputView.printStart();
-    InputView.readDate();
+    await InputView.readDate();
+    await InputView.readMenu();
   }
 }
 
