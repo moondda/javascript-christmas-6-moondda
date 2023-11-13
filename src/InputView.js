@@ -10,8 +10,6 @@ const InputView = {
         );
         const input_to_num = Number(input);
 
-        console.log(input_to_num, input, "dd");
-
         if (isNaN(input_to_num))
           throw new Error(
             "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."
@@ -38,7 +36,6 @@ const InputView = {
         // parseOrder 함수에서 발생하는 에러 처리
         try {
           const menu_object = parseOrder(inputMenu);
-          console.log(menu_object);
           menu = menu_object;
           break; // 유효한 주문이 들어온 경우 루프 탈출
         } catch (error) {

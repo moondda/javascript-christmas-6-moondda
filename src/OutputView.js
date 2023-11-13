@@ -86,7 +86,6 @@ const OutputView = {
   },
   printAfterBenefitPrice(price_before_benefit, total_benefit) {
     const final_price = price_before_benefit - total_benefit;
-    console.log(price_before_benefit, total_benefit);
     MissionUtils.Console.print(
       `<할인 후 예상 결제 금액>\n${final_price.toLocaleString()}원\n`
     );
