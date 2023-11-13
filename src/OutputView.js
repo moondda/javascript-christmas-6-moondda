@@ -45,6 +45,8 @@ const OutputView = {
       MissionUtils.Console.print(
         `크리스마스 디데이 할인: -${dday_sale.toLocaleString()}원`
       );
+
+    return dday_sale;
   },
   printWeekdaySale(day, menuObjects) {
     const weekday_sale = saleForWeekday(day, menuObjects);
@@ -52,6 +54,7 @@ const OutputView = {
       MissionUtils.Console.print(
         `평일 할인: -${weekday_sale.toLocaleString()}원`
       );
+    return weekday_sale;
   },
   printWeekendSale(day, menuObjects) {
     const weekend_sale = saleForWeekend(day, menuObjects);
@@ -59,6 +62,7 @@ const OutputView = {
       MissionUtils.Console.print(
         `주말 할인: -${weekend_sale.toLocaleString()}원`
       );
+    return weekend_sale;
   },
   printStarDaySale(day) {
     const star_day_sale = saleForStarDay(day);
@@ -66,9 +70,32 @@ const OutputView = {
       MissionUtils.Console.print(
         `특별 할인: -${star_day_sale.toLocaleString()}원`
       );
+    return star_day_sale;
   },
   printFreeGiftEvent(price) {
-    if (price > 120000) MissionUtils.Console.print("증정 이벤트: -25,000원");
+    const free_gift_sale = 25000;
+    if (price > 120000) {
+      MissionUtils.Console.print("증정 이벤트: -25,000원");
+      return free_gift_sale;
+    } else return 0;
+  },
+  printTotalBenefit(
+    dday_sale_price,
+    week_sale_price,
+    star_day_sale_price,
+    free_gift_sale_price
+  ) {
+    const total_benefit =
+      dday_sale_price +
+      week_sale_price +
+      star_day_sale_price +
+      free_gift_sale_price;
+
+    if (total_benefit)
+      MissionUtils.Console.print(
+        `<총혜택 금액>\n-${total_benefit.toLocaleString()}원`
+      );
+    else MissionUtils.Console.print("없음\n<총혜택 금액>\n없음");
   },
 };
 

@@ -18,11 +18,23 @@ class App {
     );
     await OutputView.printFreeGift(price_before_benefit);
     await OutputView.printBenefitHeader();
-    await OutputView.printDdaySale(day);
-    if (isWeekEnd) await OutputView.printWeekdaySale(day, total_menu);
-    if (!isWeekEnd) await OutputView.printWeekendSale(day, total_menu);
-    await OutputView.printStarDaySale(day);
-    await OutputView.printFreeGiftEvent(price_before_benefit);
+    const dday_sale_price = await OutputView.printDdaySale(day);
+    let week_sale_price;
+    if (isWeekEnd)
+      week_sale_price = await OutputView.printWeekdaySale(day, total_menu);
+    if (!isWeekEnd)
+      week_sale_price = await OutputView.printWeekendSale(day, total_menu);
+    const star_day_sale_price = await OutputView.printStarDaySale(day);
+    const free_gift_sale_price = await OutputView.printFreeGiftEvent(
+      price_before_benefit
+    );
+
+    const total_benefit = await OutputView.printTotalBenefit(
+      dday_sale_price,
+      week_sale_price,
+      star_day_sale_price,
+      free_gift_sale_price
+    );
   }
 }
 
