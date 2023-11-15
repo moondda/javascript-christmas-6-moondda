@@ -11,6 +11,9 @@ function parseOrder(input) {
     if (isNaN(parsedQuantity)) {
       throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
+    if (!Number.isInteger(parsedQuantity)) {
+      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
 
     const orderObject = {
       menu: menu.trim(),

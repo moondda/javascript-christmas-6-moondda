@@ -10,7 +10,7 @@ const InputView = {
         );
         const input_to_num = Number(input);
 
-        if (isNaN(input_to_num))
+        if (isNaN(input_to_num) || !Number.isInteger(input_to_num))
           throw new Error(
             "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."
           );

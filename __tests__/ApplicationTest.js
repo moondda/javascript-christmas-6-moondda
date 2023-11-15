@@ -33,7 +33,7 @@ describe("기능 테스트", () => {
   test("모든 타이틀 출력", async () => {
     // given
     const logSpy = getLogSpy();
-    mockQuestions(["3", "티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1"]);
+    mockQuestions(["3", "티본스테이크-1.2,바비큐립-1,초코케이크-2,제로콜라-1"]);
 
     // when
     const app = new App();
@@ -86,7 +86,24 @@ describe("예외 테스트", () => {
     expect(logSpy).toHaveBeenCalledWith(
       expect.stringContaining(INVALID_DATE_MESSAGE)
     );
-  });
+  }),
+    test("날짜 소수 테스트", async () => {
+      // given
+      const INVALID_DATE_MESSAGE =
+        "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+      const INPUTS_TO_END = ["1", "해산물파스타-2"];
+      const logSpy = getLogSpy();
+      mockQuestions(["1.5", ...INPUTS_TO_END]);
+
+      // when
+      const app = new App();
+      await app.run();
+
+      // then
+      expect(logSpy).toHaveBeenCalledWith(
+        expect.stringContaining(INVALID_DATE_MESSAGE)
+      );
+    });
 
   test("주문 예외 테스트", async () => {
     // given
