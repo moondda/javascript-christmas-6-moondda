@@ -111,7 +111,7 @@ describe("예외 테스트", () => {
       "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
     const INPUTS_TO_END = ["1", "해산물파스타-2"];
     const logSpy = getLogSpy();
-    mockQuestions(["1.5", ...INPUTS_TO_END]);
+    mockQuestions(["1.53", ...INPUTS_TO_END]);
 
     // when
     const app = new App();
@@ -130,6 +130,24 @@ describe("예외 테스트", () => {
     const INPUTS_TO_END = ["해산물파스타-2"];
     const logSpy = getLogSpy();
     mockQuestions(["3", "제로콜라-a", ...INPUTS_TO_END]);
+
+    // when
+    const app = new App();
+    await app.run();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(INVALID_ORDER_MESSAGE)
+    );
+  });
+
+  test("주문 수량 테스트", async () => {
+    // given
+    const INVALID_ORDER_MESSAGE =
+      "[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.";
+    const INPUTS_TO_END = ["티본스테이크-17"];
+    const logSpy = getLogSpy();
+    mockQuestions(["3", "제로콜라-16, 해산물파스타-18", ...INPUTS_TO_END]);
 
     // when
     const app = new App();

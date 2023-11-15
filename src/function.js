@@ -3,6 +3,7 @@ function parseOrder(input) {
   const orders = input.split(",");
 
   const orderObjects = [];
+  let totalQuantity = 0;
 
   // 각 주문을 순회하며 객체로 변환하여 배열에 추가
   orders.forEach((order) => {
@@ -11,17 +12,18 @@ function parseOrder(input) {
     if (isNaN(parsedQuantity)) {
       throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
-    if (!Number.isInteger(parsedQuantity)) {
-      throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
-    }
 
     const orderObject = {
       menu: menu.trim(),
       quantity: parsedQuantity, // 변환된 숫자로 저장
     };
     orderObjects.push(orderObject);
+    totalQuantity += parsedQuantity;
   });
-
+  if (totalQuantity > 20)
+    throw new Error(
+      "[ERROR] 메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다."
+    );
   return orderObjects;
 }
 
