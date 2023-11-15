@@ -70,7 +70,7 @@ describe("기능 테스트", () => {
 });
 
 describe("예외 테스트", () => {
-  test("날짜 예외 테스트", async () => {
+  test("날짜 숫자 여부 테스트", async () => {
     // given
     const INVALID_DATE_MESSAGE =
       "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
@@ -87,13 +87,13 @@ describe("예외 테스트", () => {
       expect.stringContaining(INVALID_DATE_MESSAGE)
     );
   }),
-    test("날짜 소수 테스트", async () => {
+    test("날짜 1~31 테스트", async () => {
       // given
       const INVALID_DATE_MESSAGE =
-        "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
-      const INPUTS_TO_END = ["1", "해산물파스타-2"];
+        "[ERROR] 날짜는 1일부터 31일까지입니다. 다시 입력해주세요.";
+      const INPUTS_TO_END = ["3", "해산물파스타-2"];
       const logSpy = getLogSpy();
-      mockQuestions(["1.5", ...INPUTS_TO_END]);
+      mockQuestions(["35", ...INPUTS_TO_END]);
 
       // when
       const app = new App();
@@ -104,6 +104,24 @@ describe("예외 테스트", () => {
         expect.stringContaining(INVALID_DATE_MESSAGE)
       );
     });
+
+  test("날짜 소수 테스트", async () => {
+    // given
+    const INVALID_DATE_MESSAGE =
+      "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+    const INPUTS_TO_END = ["1", "해산물파스타-2"];
+    const logSpy = getLogSpy();
+    mockQuestions(["1.5", ...INPUTS_TO_END]);
+
+    // when
+    const app = new App();
+    await app.run();
+
+    // then
+    expect(logSpy).toHaveBeenCalledWith(
+      expect.stringContaining(INVALID_DATE_MESSAGE)
+    );
+  });
 
   test("주문 예외 테스트", async () => {
     // given
