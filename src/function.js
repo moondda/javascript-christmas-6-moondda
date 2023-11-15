@@ -1,3 +1,4 @@
+import { MissionUtils } from "@woowacourse/mission-utils";
 import { MENU_DATA } from "./data";
 function parseOrder(input) {
   const orders = input.split(",");
@@ -15,8 +16,9 @@ function parseOrder(input) {
 
     const orderObject = {
       menu: menu.trim(),
-      quantity: parsedQuantity, // 변환된 숫자로 저장
+      quantity: parsedQuantity,
     };
+
     orderObjects.push(orderObject);
     totalQuantity += parsedQuantity;
   });
@@ -41,6 +43,11 @@ function calculatePriceBeforeBenefit(total_menu) {
     const foundMenu = MENU_DATA.find((item) => item.name === menu);
     totalPrice += foundMenu.price * quantity;
   });
+
+  if (totalPrice < 10000)
+    MissionUtils.Console.print(
+      "총주문 금액 10,000원 이상부터 이벤트가 적용됩니다"
+    );
 
   return totalPrice;
 }

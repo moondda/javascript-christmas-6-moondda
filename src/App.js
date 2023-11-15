@@ -17,7 +17,6 @@ class App {
       price_before_benefit,
       total_benefit
     );
-    3;
     await OutputView.printBadge(total_benefit);
   }
 
