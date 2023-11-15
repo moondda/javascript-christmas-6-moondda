@@ -7,6 +7,7 @@ import {
   saleForStarDay,
   getBadge,
 } from "./function";
+
 const OutputView = {
   printPreview() {
     MissionUtils.Console.print(

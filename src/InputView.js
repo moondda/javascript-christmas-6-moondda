@@ -33,11 +33,10 @@ const InputView = {
           "주문하실 메뉴를 메뉴와 개수를 알려 주세요."
         );
 
-        // parseOrder 함수에서 발생하는 에러 처리
         try {
           const menu_object = parseOrder(inputMenu);
           menu = menu_object;
-          break; // 유효한 주문이 들어온 경우 루프 탈출
+          break;
         } catch (error) {
           throw new Error(error.message);
         }

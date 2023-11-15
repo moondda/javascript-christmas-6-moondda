@@ -7,11 +7,7 @@ function parseOrder(input) {
   // 각 주문을 순회하며 객체로 변환하여 배열에 추가
   orders.forEach((order) => {
     const [menu, quantity] = order.trim().split("-");
-
-    // quantity를 숫자로 변환
     const parsedQuantity = parseInt(quantity, 10);
-
-    // quantity가 숫자가 아니라면 에러 처리
     if (isNaN(parsedQuantity)) {
       throw new Error("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
@@ -37,10 +33,7 @@ function calculatePriceBeforeBenefit(total_menu) {
 
   total_menu.forEach((order) => {
     const { menu, quantity } = order;
-
-    // 주어진 메뉴명과 일치하는 메뉴 찾기
     const foundMenu = MENU_DATA.find((item) => item.name === menu);
-
     totalPrice += foundMenu.price * quantity;
   });
 
