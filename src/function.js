@@ -109,6 +109,15 @@ function getBadge(benefit) {
   return "없음";
 }
 
+function getDateError(input_to_num) {
+  if (isNaN(input_to_num) || !Number.isInteger(input_to_num))
+    throw new Error("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+  if (input_to_num < 1 || input_to_num > 31)
+    throw new Error(
+      "[ERROR] 날짜는 1일부터 31일까지입니다. 다시 입력해주세요."
+    );
+}
+
 export {
   parseOrder,
   formatMenu,
@@ -119,4 +128,5 @@ export {
   saleForWeekend,
   saleForStarDay,
   getBadge,
+  getDateError,
 };

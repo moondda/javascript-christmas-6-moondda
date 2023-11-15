@@ -1,5 +1,5 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
-import { parseOrder } from "./function";
+import { parseOrder, getDateError } from "./function";
 const InputView = {
   async readDate() {
     let date;
@@ -9,15 +9,7 @@ const InputView = {
           "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.\n12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)"
         );
         const input_to_num = Number(input);
-
-        if (isNaN(input_to_num) || !Number.isInteger(input_to_num))
-          throw new Error(
-            "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요."
-          );
-        if (input_to_num < 1 || input_to_num > 31)
-          throw new Error(
-            "[ERROR] 날짜는 1일부터 31일까지입니다. 다시 입력해주세요."
-          );
+        getDateError(input_to_num);
         date = input_to_num;
         break;
       } catch (error) {
